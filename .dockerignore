@@ -1,0 +1,9 @@
+.git
+.venv
+.agentkit
+.vscode
+__pycache__
+*.pyc
+*.log
+.env*
+config.json
