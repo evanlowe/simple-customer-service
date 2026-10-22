@@ -1,0 +1,9 @@
+config.json
+.env*
+.venv/
+__pycache__/
+*.pyc
+.adk/
+.codegraph/
+*.log
+.DS_Store
