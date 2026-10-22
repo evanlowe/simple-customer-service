@@ -2,6 +2,6 @@
   "model_name": "doubao-seed-1-6-250615",
   "model_api_base": "https://ark.cn-beijing.volces.com/api/v3/",
   "model_api_key": "",
-  "host": "127.0.0.1",
+  "host": "0.0.0.0",
   "port": 8000
 }

@@ -4,7 +4,11 @@
 
 ## 启动
 
-需要 Python 3.12 和 uv，以及有效的火山方舟 API Key 和已开通的模型。
+需要 Python 3.12 和 uv，以及已开通的模型。
+
+在 AgentKit 云上部署时，VeADK 使用运行角色自动置换模型凭据，无需提供密钥、环境变量或 `config.json`。部署入口填写 `app.py`，默认监听 `0.0.0.0:8000`。运行角色需具备 VeADK 获取模型凭据所需的权限。
+
+本地运行时，可以通过可选的 `config.json` 显式提供模型配置：
 
 ```bash
 uv venv --python 3.12
@@ -18,7 +22,7 @@ cp config.example.json config.json
 .venv/bin/python app.py
 ```
 
-应用不读取或设置环境变量，不需要 `.env` 或 `export`；模型、密钥、地址、端口均从 `config.json` 显式传入。依赖 SDK 自身可能读取其内部默认配置。`config.json` 已被 Git 忽略，仓库不包含真实密钥。
+应用不读取或设置环境变量，不需要 `.env` 或 `export`。有 `config.json` 时读取该文件，否则使用 `config.example.json`；密钥留空时由 VeADK 自动获取。依赖 SDK 自身可能读取其内部默认配置。`config.json` 已被 Git 忽略，仓库不包含真实密钥。
 
 ## 对话
 
@@ -34,4 +38,4 @@ curl -N http://127.0.0.1:8000/invoke \
 
 修改 `faq.md` 即可调整客服知识，修改后重启服务。示例没有订单、退款或人工转接系统；超出 FAQ 的问题会提示咨询人工。
 
-默认只监听本机。这个最小示例未添加用户认证，不应直接作为公开客服服务部署。
+这个最小示例未添加应用层用户认证，对外访问应通过平台的鉴权入口；仅需本机访问时可在 `config.json` 中将 `host` 改为 `127.0.0.1`。

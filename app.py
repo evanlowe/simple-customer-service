@@ -38,8 +38,6 @@ def create_app(config: dict) -> AgentkitAgentServerApp:
 if __name__ == "__main__":
     config_path = ROOT / "config.json"
     if not config_path.exists():
-        raise SystemExit("请复制 config.example.json 为 config.json，填写模型和 API Key。")
+        config_path = ROOT / "config.example.json"
     config = json.loads(config_path.read_text(encoding="utf-8"))
-    if not config.get("model_api_key", "").strip():
-        raise SystemExit("请在 config.json 中填写 model_api_key。")
     create_app(config).run(host=config["host"], port=config["port"])
