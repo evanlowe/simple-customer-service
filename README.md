@@ -8,7 +8,7 @@
 
 在 AgentKit 云上部署时，VeADK 使用运行角色自动置换模型凭据，无需提供密钥、环境变量或 `config.json`。部署入口填写 `app.py`，默认监听 `0.0.0.0:8000`。运行角色需具备 VeADK 获取模型凭据所需的权限。
 
-仓库自带 Dockerfile，使用 AgentKit 官方 Python 3.12 基础镜像，并显式从 PyPI 安装依赖，避免构建环境的镜像源尚未同步 SDK 版本。
+仓库自带 Dockerfile，使用 AgentKit 官方 Python 3.12 基础镜像，SDK 使用 PyPI 官方固定安装包并校验 SHA-256，其余依赖使用阿里云 PyPI 镜像，避免镜像源尚未同步 SDK 版本及跨境索引访问缓慢。
 
 本地运行时，可以通过可选的 `config.json` 显式提供模型配置：
 
